@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QryptoCore User Manual</title>
+    <style>
+        :root {
+            --primary: #00b4ff;
+            --dark-bg: #121212;
+            --dark-text: #e0e0e0;
+            --light-bg: #f5f5f5;
+            --light-text: #333333;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--light-text);
+            background-color: var(--light-bg);
+            margin: 0;
+            padding: 0;
+        }
+        
+        .dark-mode {
+            color: var(--dark-text);
+            background-color: var(--dark-bg);
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        h1, h2, h3 {
+            color: var(--primary);
+        }
+        
+        .dark-mode h1, 
+        .dark-mode h2, 
+        .dark-mode h3 {
+            color: var(--primary);
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .dark-mode .feature-card {
+            background: #1e1e1e;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        
+        .screenshot {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 1rem;
+        }
+        
+        .tab {
+            padding: 0.5rem 1rem;
+            background: #eee;
+            border: none;
+            cursor: pointer;
+            margin-right: 0.5rem;
+            border-radius: 4px 4px 0 0;
+        }
+        
+        .dark-mode .tab {
+            background: #2d2d2d;
+            color: var(--dark-text);
+        }
+        
+        .tab.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .cipher-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        
+        .cipher-table th, .cipher-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        .dark-mode .cipher-table th, 
+        .dark-mode .cipher-table td {
+            border-color: #444;
+        }
+        
+        .cipher-table th {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .dark-mode .cipher-table th {
+            background-color: var(--primary);
+        }
+        
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .dark-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #ddd;
+        }
+        
+        .dark-mode footer {
+            border-top-color: #444;
+        }
+        
+        .warning {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .dark-mode .warning {
+            background-color: #332c00;
+            border-left-color: #ffc107;
+        }
+        
+        .note {
+            background-color: #e7f5ff;
+            border-left: 4px solid #4dabf7;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .dark-mode .note {
+            background-color: #002240;
+            border-left-color: #4dabf7;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>QryptoCore User Manual</h1>
+        <p>Classical to Quantum—One Tool to Lock Them All</p>
+    </header>
+    
+    <div class="container">
+        <button class="btn dark-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+        
+        <section id="introduction">
+            <div class="feature-card">
+                <h2>Introduction</h2>
+                <p>QryptoCore is a comprehensive encryption/decryption tool that supports multiple classical cipher algorithms. This user manual provides detailed instructions on how to use all features of the application.</p>
+                
+                <h3>System Requirements</h3>
+                <ul>
+                    <li>Windows, macOS, or Linux operating system</li>
+                    <li>Python 3.7 or later</li>
+                    <li>Minimum 2GB RAM</li>
+                    <li>100MB disk space</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="getting-started">
+            <div class="feature-card">
+                <h2>Getting Started</h2>
+                <h3>Installation</h3>
+                <ol>
+                    <li>Download the QryptoCore package</li>
+                    <li>Install required dependencies: <code>pip install -r requirements.txt</code></li>
+                    <li>Run the application: <code>python qryptocore.py</code></li>
+                </ol>
+                
+                <div class="note">
+                    <p><strong>Note:</strong> On first launch, QryptoCore will create an "assets" folder to store your settings and history.</p>
+                </div>
+                
+                <h3>Application Interface</h3>
+                <img src="screenshots/main.png" alt="QryptoCore Main Interface" class="screenshot">
+                <p>The main interface consists of four tabs:</p>
+                <ol>
+                    <li><strong>Encrypt:</strong> For encrypting plaintext</li>
+                    <li><strong>Decrypt:</strong> For decrypting ciphertext</li>
+                    <li><strong>Settings:</strong> For configuring application preferences</li>
+                    <li><strong>History:</strong> For viewing past operations</li>
+                </ol>
+            </div>
+        </section>
+        
+        <section id="encryption">
+            <div class="feature-card">
+                <h2>Encryption</h2>
+                <p>To encrypt text using QryptoCore:</p>
+                
+                <div class="tabs">
+                    <button class="tab active" onclick="openTab(event, 'encrypt-steps')">Steps</button>
+                    <button class="tab" onclick="openTab(event, 'encrypt-screenshot')">Screenshot</button>
+                </div>
+                
+                <div id="encrypt-steps" class="tab-content active">
+                    <ol>
+                        <li>Navigate to the <strong>Encrypt</strong> tab</li>
+                        <li>Enter or paste your plaintext in the input area</li>
+                        <li>Select a cipher algorithm from the dropdown</li>
+                        <li>Enter an encryption key (or click "Generate Key" for supported ciphers)</li>
+                        <li>Click the <strong>Encrypt</strong> button</li>
+                        <li>The encrypted result will appear in the Decrypt tab's input area</li>
+                    </ol>
+                    
+                    <div class="warning">
+                        <p><strong>Important:</strong> Always keep your encryption keys secure. Without the correct key, your data cannot be decrypted.</p>
+                    </div>
+                </div>
+                
+                <div id="encrypt-screenshot" class="tab-content">
+                    <img src="screenshots/encrypt.png" alt="Encrypt Tab" class="screenshot">
+                </div>
+                
+                <h3>Supported Ciphers</h3>
+                <table class="cipher-table">
+                    <thead>
+                        <tr>
+                            <th>Cipher</th>
+                            <th>Key Requirements</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>AES</td>
+                            <td>Any string (hashed to 16 bytes)</td>
+                            <td>Advanced Encryption Standard - symmetric block cipher</td>
+                        </tr>
+                        <tr>
+                            <td>Caesar</td>
+                            <td>Number (1-25)</td>
+                            <td>Shift cipher where each letter is shifted by key positions</td>
+                        </tr>
+                        <tr>
+                            <td>Vigenère</td>
+                            <td>Text string</td>
+                            <td>Uses a keyword to shift letters variably</td>
+                        </tr>
+                        <tr>
+                            <td>OTP</td>
+                            <td>Text string (must be at least as long as plaintext)</td>
+                            <td>One-time pad - theoretically unbreakable when used correctly</td>
+                        </tr>
+                        <tr>
+                            <td>Atbash</td>
+                            <td>None</td>
+                            <td>Simple substitution cipher reversing the alphabet</td>
+                        </tr>
+                        <tr>
+                            <td>Rail Fence</td>
+                            <td>Number (2+)</td>
+                            <td>Transposition cipher writing text in zigzag pattern</td>
+                        </tr>
+                        <tr>
+                            <td>DES3</td>
+                            <td>Any string (hashed to 24 bytes)</td>
+                            <td>Triple Data Encryption Standard - symmetric block cipher</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <section id="decryption">
+            <div class="feature-card">
+                <h2>Decryption</h2>
+                <p>To decrypt text using QryptoCore:</p>
+                
+                <div class="tabs">
+                    <button class="tab active" onclick="openTab(event, 'decrypt-steps')">Steps</button>
+                    <button class="tab" onclick="openTab(event, 'decrypt-screenshot')">Screenshot</button>
+                </div>
+                
+                <div id="decrypt-steps" class="tab-content active">
+                    <ol>
+                        <li>Navigate to the <strong>Decrypt</strong> tab</li>
+                        <li>Enter or paste your ciphertext in the input area (or click "Browse File" to load from file)</li>
+                        <li>Select the cipher algorithm that was used for encryption</li>
+                        <li>Enter the encryption key used originally</li>
+                        <li>Click the <strong>Decrypt</strong> button</li>
+                        <li>The decrypted plaintext will appear in the same input area</li>
+                    </ol>
+                    
+                    <div class="warning">
+                        <p><strong>Note:</strong> You must know both the cipher algorithm and exact key used for encryption to successfully decrypt.</p>
+                    </div>
+                </div>
+                
+                <div id="decrypt-screenshot" class="tab-content">
+                    <img src="screenshots/decrypt.png" alt="Decrypt Tab" class="screenshot">
+                </div>
+                
+                <h3>Troubleshooting Decryption</h3>
+                <ul>
+                    <li><strong>Incorrect key:</strong> Verify the key is exactly the same as used for encryption</li>
+                    <li><strong>Wrong cipher:</strong> Ensure you've selected the correct cipher algorithm</li>
+                    <li><strong>Corrupted data:</strong> If loading from file, verify the file wasn't modified</li>
+                    <li><strong>Format issues:</strong> Some ciphers require exact formatting (e.g., Base64 for AES/DES3)</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="file-operations">
+            <div class="feature-card">
+                <h2>File Operations</h2>
+                <h3>Loading Files</h3>
+                <ol>
+                    <li>In the Decrypt tab, click <strong>Browse File</strong></li>
+                    <li>Select a text file containing ciphertext</li>
+                    <li>The file contents will load into the input area</li>
+                </ol>
+                
+                <h3>Saving Files</h3>
+                <ol>
+                    <li>After encryption/decryption, ensure the result is displayed</li>
+                    <li>Click <strong>File → Save As...</strong> from the menu</li>
+                    <li>Choose a location and filename</li>
+                    <li>Click <strong>Save</strong></li>
+                </ol>
+                
+                <div class="note">
+                    <p><strong>Tip:</strong> Use the <strong>New</strong> menu option to clear all input fields when starting a new operation.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="settings">
+            <div class="feature-card">
+                <h2>Settings & Customization</h2>
+                <img src="screenshots/settings.png" alt="Settings Tab" class="screenshot">
+                
+                <h3>Appearance</h3>
+                <p>QryptoCore offers three visual themes:</p>
+                <ul>
+                    <li><strong>Dark:</strong> Dark background with light text (default)</li>
+                    <li><strong>Light:</strong> Light background with dark text</li>
+                    <li><strong>Tech:</strong> High-contrast theme with neon elements</li>
+                </ul>
+                
+                <h3>Font Size</h3>
+                <p>Adjust the font size using the slider in the Settings tab (8-18pt range).</p>
+                
+                <h3>Resetting to Defaults</h3>
+                <p>Click <strong>Reset to Defaults</strong> in the Settings tab to restore all preferences to their original values.</p>
+            </div>
+        </section>
+        
+        <section id="history">
+            <div class="feature-card">
+                <h2>Operation History</h2>
+                <img src="screenshots/history.png" alt="History Tab" class="screenshot">
+                
+                <p>The History tab maintains a log of all encryption and decryption operations performed during the current session.</p>
+                
+                <h3>Features</h3>
+                <ul>
+                    <li>View timestamp, operation type, and cipher used</li>
+                    <li>Select an item and click <strong>Copy Selected</strong> to copy to clipboard</li>
+                    <li>Click <strong>Clear History</strong> to remove all entries</li>
+                </ul>
+                
+                <div class="note">
+                    <p><strong>Note:</strong> History is not preserved between application sessions.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="troubleshooting">
+            <div class="feature-card">
+                <h2>Troubleshooting</h2>
+                <h3>Common Issues</h3>
+                
+                <table class="cipher-table">
+                    <thead>
+                        <tr>
+                            <th>Issue</th>
+                            <th>Possible Cause</th>
+                            <th>Solution</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Decryption fails</td>
+                            <td>Incorrect key or cipher</td>
+                            <td>Verify both key and cipher match encryption settings</td>
+                        </tr>
+                        <tr>
+                            <td>Invalid key error</td>
+                            <td>Wrong key format for cipher</td>
+                            <td>Check key requirements for selected cipher</td>
+                        </tr>
+                        <tr>
+                            <td>File won't load</td>
+                            <td>File too large or corrupted</td>
+                            <td>Try a smaller file or verify file integrity</td>
+                        </tr>
+                        <tr>
+                            <td>Application crashes</td>
+                            <td>Missing dependencies</td>
+                            <td>Reinstall requirements: <code>pip install -r requirements.txt</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>QryptoCore User Manual | Version 1.1.5 | © 2025 QryptoCore Team</p>
+    </footer>
+    
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+        
+        function openTab(evt, tabName) {
+            // Hide all tab content
+            const tabContents = document.getElementsByClassName('tab-content');
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+            }
+            
+            // Remove active class from all tabs
+            const tabs = document.getElementsByClassName('tab');
+            for (let i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+            
+            // Show current tab and mark button as active
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
